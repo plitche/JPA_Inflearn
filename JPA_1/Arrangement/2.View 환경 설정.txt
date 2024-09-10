@@ -1,0 +1,8 @@
+2. View 환경 설정
+	- thymeleaf 템플리 엔진
+	- thymeleaf 공식 사이트: https://www.thymeleaf.org/
+	- 스프링 공식 튜토리얼: https:// spring.io/guides/gs/serving-web-content/
+	- 스프리부트 메뉴얼: https://docs.spring.io/spring-boot/docs/2.1.6.RELEASE/reference/html/boot-features-develooping-web-applications.html#boot-features-spring-mvc-template-engines
+	
+	- 스프링 부트 thymeleaf viewName 매핑
+		> `resources:templates/`+{ViewName}+`.html`
