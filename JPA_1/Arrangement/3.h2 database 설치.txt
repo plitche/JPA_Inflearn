@@ -1,0 +1,2 @@
+3. h2 database 설치
+JDBC URL: jdbc:h2:tcp://localhost/~/testDB
