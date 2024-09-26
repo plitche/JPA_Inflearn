@@ -62,7 +62,7 @@ public class ItemController {
 
     @PostMapping("/items/{itemId}/edit")
     public String updateItem(@PathVariable String itemId, @ModelAttribute("form") BookForm form) {
-        Book book = new Book();
+        Book book = new Book(); // 준영속 엔티티 : 준영속 상태의 객체
         book.setId(form.getId());
         book.setName(form.getName());
         book.setPrice(form.getPrice());
