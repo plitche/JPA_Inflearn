@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -8,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import jpabook.jpashop.domain.item.Address;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,8 +24,9 @@ public class Member {
     private String name;
 
     @Embedded
-    private jpabook.jpashop.domain.item.Address Address;
+    private Address Address;
 
+    // @JsonIgnore
     @OneToMany(mappedBy = "member") // 연관관계의 주인이 아닐때
     private List<Order> orders = new ArrayList<>();
 
