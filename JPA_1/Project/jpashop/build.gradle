@@ -30,6 +30,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.hibernate.validator:hibernate-validator:6.0.13.Final'
 	implementation 'javax.validation:validation-api:2.0.1.Final'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
 
 	/*https://github.com/gavlyukovskiy/spring-boot-data-source-decorator*/
 	implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1")
