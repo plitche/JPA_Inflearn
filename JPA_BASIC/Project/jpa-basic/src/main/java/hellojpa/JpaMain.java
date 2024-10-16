@@ -20,8 +20,8 @@ public class JpaMain {
             /*
             Member member = new Member();
             member.setId(1L);
-            member.setName("HelloA");
-            em.persist(member);
+            member.setName("HelloA"); // 여기까지가 비영속 상태
+            em.persist(member); // 객체를 저장한 상태 -> 영속 상태
             */
 
             // 수정
@@ -40,7 +40,7 @@ public class JpaMain {
                 System.out.println("member.getName() = " + member.getName());
             }
 
-            tx.commit();
+            tx.commit(); // transaction을 commit하는 시점에 쿼리가 실행됨
         } catch (Exception e) {
             tx.rollback();
         } finally {
