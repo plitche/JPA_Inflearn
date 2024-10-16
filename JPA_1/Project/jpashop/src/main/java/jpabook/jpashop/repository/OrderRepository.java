@@ -122,6 +122,17 @@ public class OrderRepository {
                 " join o.delivery d", OrderSimpleQueryDto.class
         ).getResultList();
     }
+
+    // 1대다 fetch 조인하는 순간 페이징 불가
+    public List<Order> findAllWithItem() {
+        return em.createQuery(
+            "select distinct o from Order o" +
+                " join fetch o.member m" +
+                " join fetch o.delivery d" +
+                " join fetch o.orderItems oi" +
+                " join fetch oi.item i", Order.class)
+            .getResultList();
+    }
 }
 
 
