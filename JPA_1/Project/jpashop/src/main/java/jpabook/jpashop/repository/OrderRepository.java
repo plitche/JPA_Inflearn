@@ -114,6 +114,25 @@ public class OrderRepository {
         ).getResultList();
     }
 
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        return em.createQuery(
+            "select o from Order o" +
+                " join fetch o.member m" +
+                " join fetch o.delivery d", Order.class)
+            .setFirstResult(offset)
+            .setMaxResults(limit)
+            .getResultList();
+
+        /*
+        // 아래처럼 해도 상관없지만 to one 관계는 fetch join 하는것이 좋다
+        return em.createQuery(
+                "select o from Order o", Order.class)
+            .setFirstResult(offset)
+            .setMaxResults(limit)
+            .getResultList();
+        */
+    }
+
     public List<OrderSimpleQueryDto> findOrderDtos() {
         return em.createQuery(
             "select new jpabook.jpashop.repository.order.simplequery.OrderSimpleQueryDto(o.id, m.name, o.orderDate, o.status, d.address) " +
