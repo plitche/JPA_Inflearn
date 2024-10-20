@@ -25,11 +25,14 @@ public class JpaMain {
             Member member = new Member();
             member.setUsername("member1");
             // 연관관계의 주인에만 값을 세팅하면 된다? X -> 양방향이면 둘다 해야한다.
-            member.setTeam(team);
+            member.changeTeam(team);
             em.persist(member);
 
             // 연관관계의 주인이 아니기 때문에 할 필요가 없다? X -> 양방향이면 둘다 해야한다.
-            team.getMembers().add(member);
+            // -> Member의 setTeam 편의 메소드를 통해 필요 없게 처리
+            // team.getMembers().add(member);
+
+            // team.addMember(member);
 
             em.flush();
             em.clear();

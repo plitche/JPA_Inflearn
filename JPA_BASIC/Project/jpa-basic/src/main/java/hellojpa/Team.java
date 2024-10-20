@@ -44,4 +44,21 @@ public class Team {
     public void setName(String name) {
         this.name = name;
     }
+
+//    public void addMember(Member member) {
+//        member.setTeam(this);
+//        members.add(member);
+//    }
+
+    // 이렇게 서로 toString을 호출하게되면 무한 루프가 발생한다.
+    /*
+    @Override
+    public String toString() {
+        return "Team{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", members=" + members +
+            '}';
+    }
+    */
 }

@@ -29,6 +29,12 @@ public class Member {
         this.team = team;
     }
 
+    // 연관관계 편의 메소드
+    public void changeTeam(Team team) {
+        this.team = team;
+        team.getMembers().add(this);
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,4 +51,15 @@ public class Member {
         this.username = username;
     }
 
+    // 이렇게 서로 toString을 호출하게되면 무한 루프가 발생한다.
+    /*
+    @Override
+    public String toString() {
+        return "Member{" +
+            "id=" + id +
+            ", username='" + username + '\'' +
+            ", team=" + team.toString() +
+            '}';
+    }
+    */
 }
