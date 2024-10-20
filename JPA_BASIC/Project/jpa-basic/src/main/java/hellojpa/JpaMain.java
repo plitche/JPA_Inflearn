@@ -24,21 +24,19 @@ public class JpaMain {
             // 회원 저장
             Member member = new Member();
             member.setUsername("member1");
-//            member.setTeamId(team.getId());
+            // 연관관계의 주인에만 값을 세팅하면 된다? X -> 양방향이면 둘다 해야한다.
             member.setTeam(team);
             em.persist(member);
+
+            // 연관관계의 주인이 아니기 때문에 할 필요가 없다? X -> 양방향이면 둘다 해야한다.
+            team.getMembers().add(member);
 
             em.flush();
             em.clear();
 
-            // 조회
-            Member findMember = em.find(Member.class, member.getId());
+            Team findTeam = em.find(Team.class, team.getId());
+            List<Member> members = findTeam.getMembers();
 
-//            Long findTeamId = findMember.getTeamId();
-//            Team findTeam = em.find(Team.class, findTeamId);
-            Team findTeam = findMember.getTeam();
-
-            List<Member> members = findMember.getTeam().getMembers();
             for (Member m : members) {
                 System.out.println("m = " + m.getUsername());
             }
