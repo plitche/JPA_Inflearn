@@ -17,6 +17,7 @@ public class Member {
 //    @Column(name = "TEAM_ID")
 //    private Long teamId;
 
+    // 다대일 관계에서는 '다'쪽이 관계의 주인
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
@@ -30,10 +31,10 @@ public class Member {
     }
 
     // 연관관계 편의 메소드
-    public void changeTeam(Team team) {
-        this.team = team;
-        team.getMembers().add(this);
-    }
+//    public void changeTeam(Team team) {
+//        this.team = team;
+//        team.getMembers().add(this);
+//    }
 
     public Long getId() {
         return id;

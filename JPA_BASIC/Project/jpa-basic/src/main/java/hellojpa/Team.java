@@ -18,16 +18,9 @@ public class Team {
     private String name;
 
     // 반대편에 있는 어떤 변수명과 매핑이 되어있는지
-    @OneToMany(mappedBy = "team")
-    private List<Member> members = new ArrayList<Member>();
-
-    public List<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
-    }
+    // 양방향 관계는 사용 X -> 단방향 관계로 사용 O
+//    @OneToMany(mappedBy = "team")
+//    private List<Member> members = new ArrayList<Member>();
 
     public long getId() {
         return id;
