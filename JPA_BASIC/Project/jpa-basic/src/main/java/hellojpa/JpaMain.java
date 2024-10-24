@@ -16,33 +16,19 @@ public class JpaMain {
         tx.begin();
 
         try {
-            // 팀 저장
-            Team team = new Team();
-            team.setName("TeamA");;
-            em.persist(team);
+            Movie movie = new Movie();
+            movie.setDirector("Aaa");
+            movie.setActor("bbbb");
+            movie.setName("바람과 함께 사라지다.");
+            movie.setPrice(10000);
 
-            // 회원 저장
-            Member member = new Member();
-            member.setUsername("member1");
-            // 연관관계의 주인에만 값을 세팅하면 된다? X -> 양방향이면 둘다 해야한다.
-            member.changeTeam(team);
-            em.persist(member);
-
-            // 연관관계의 주인이 아니기 때문에 할 필요가 없다? X -> 양방향이면 둘다 해야한다.
-            // -> Member의 setTeam 편의 메소드를 통해 필요 없게 처리
-            // team.getMembers().add(member);
-
-            // team.addMember(member);
+            em.persist(movie);
 
             em.flush();
             em.clear();
 
-            Team findTeam = em.find(Team.class, team.getId());
-            List<Member> members = findTeam.getMembers();
-
-            for (Member m : members) {
-                System.out.println("m = " + m.getUsername());
-            }
+            Movie findMovie = em.find(Movie.class, movie.getId());
+            System.out.println("findMovie = " + findMovie);
 
             tx.commit();
         } catch (Exception e) {
