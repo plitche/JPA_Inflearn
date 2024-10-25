@@ -4,8 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.time.LocalDateTime;
-import java.util.List;
 
 public class JpaMain {
 
@@ -17,12 +15,26 @@ public class JpaMain {
         tx.begin();
 
         try {
+//            Member member = em.find(Member.class, 10L);
+//            printMemberAndTeam(member);
+//            printMember(member);
+
             Member member = new Member();
-            member.setUsername("user");
-            member.setCreatedBy("Kim");
-            member.setCreatedDate(LocalDateTime.now());
+            member.setUsername("hello");
 
             em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            Member findMember = em.find(Member.class, member.getId());
+            System.out.println("findMember = " + findMember.getId());
+            System.out.println("findMember = " + findMember.getUsername());
+
+            Member findMember2 = em.getReference(Member.class, findMember.getId());
+            System.out.println("findMember2 = " + findMember2.getClass());
+            System.out.println("findMember2 = " + findMember2.getId());
+            System.out.println("findMember2 = " + findMember2.getUsername());
 
             tx.commit();
         } catch (Exception e) {
@@ -32,5 +44,18 @@ public class JpaMain {
         }
 
         emf.close();
+    }
+
+    private static void printMember(Member member) {
+        String username = member.getUsername();
+        System.out.println("username = " + username);
+    }
+
+    private static void printMemberAndTeam(Member member) {
+        String username = member.getUsername();
+        System.out.println("username = " + username);
+
+        Team team = member.getTeam();
+        System.out.println("team = " + team.getName());
     }
 }
