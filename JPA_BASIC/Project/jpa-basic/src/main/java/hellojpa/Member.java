@@ -1,6 +1,7 @@
 package hellojpa;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +30,20 @@ public class Member extends BaseEntity{
     @OneToOne
     @JoinColumn(name = "LOCKER_ID")
     private Locker locker;
+
+    // Period
+//    private LocalDateTime startDate;
+//    private LocalDateTime endDate;
+    @Embedded
+    private Period period;
+
+    // Address
+//    private String city;
+//    private String street;
+//    private String zipcode;
+    @Embedded
+    private Address address;
+
 
 //    @ManyToMany
 //    @JoinTable(name = "MEMBER_PRODUCT")
@@ -63,6 +78,38 @@ public class Member extends BaseEntity{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Locker getLocker() {
+        return locker;
+    }
+
+    public void setLocker(Locker locker) {
+        this.locker = locker;
+    }
+
+    public Period getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(Period period) {
+        this.period = period;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<MemberProduct> getMemberProducts() {
+        return memberProducts;
+    }
+
+    public void setMemberProducts(List<MemberProduct> memberProducts) {
+        this.memberProducts = memberProducts;
     }
 
     // 이렇게 서로 toString을 호출하게되면 무한 루프가 발생한다.
