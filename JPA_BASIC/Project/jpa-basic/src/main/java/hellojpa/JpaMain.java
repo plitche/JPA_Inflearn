@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
 
@@ -15,26 +16,29 @@ public class JpaMain {
         tx.begin();
 
         try {
-//            Member member = em.find(Member.class, 10L);
-//            printMemberAndTeam(member);
-//            printMember(member);
+            Member member1 = new Member();
+            member1.setUsername("hello");
+            em.persist(member1);
+            em.persist(member1);
 
-            Member member = new Member();
-            member.setUsername("hello");
-
-            em.persist(member);
+            Team team = new Team();
+            team.setName("teamA");
+            member1.setTeam(team);
+            em.persist(team);
 
             em.flush();
             em.clear();
 
-            Member findMember = em.find(Member.class, member.getId());
-            System.out.println("findMember = " + findMember.getId());
-            System.out.println("findMember = " + findMember.getUsername());
+            Member m = em.find(Member.class, member1.getId());
 
-            Member findMember2 = em.getReference(Member.class, findMember.getId());
-            System.out.println("findMember2 = " + findMember2.getClass());
-            System.out.println("findMember2 = " + findMember2.getId());
-            System.out.println("findMember2 = " + findMember2.getUsername());
+            System.out.println("m = " + m.getTeam().getClass());
+
+            System.out.println("===============");
+            m.getTeam().getName(); // 실제 사용 하는 시점에 db조회(프록시 초기화)
+            System.out.println("===============");
+
+            List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
+
 
             tx.commit();
         } catch (Exception e) {

@@ -21,7 +21,8 @@ public class Member extends BaseEntity{
 //    private Long teamId;
 
     // 다대일 관계에서는 '다'쪽이 관계의 주인
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY) // 지연 로딩
+    // @ManyToOne(fetch = FetchType.EAGER) // 즉시 로딩
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
