@@ -16,29 +16,22 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Member member1 = new Member();
-            member1.setUsername("hello");
-            em.persist(member1);
-            em.persist(member1);
+            Child child1 = new Child();
+            Child child2 = new Child();
 
-            Team team = new Team();
-            team.setName("teamA");
-            member1.setTeam(team);
-            em.persist(team);
+            Parent parent = new Parent();
+            parent.addChild(child1);
+            parent.addChild(child2);
+
+//            em.persist(child1);
+//            em.persist(child2);
+            em.persist(parent);
 
             em.flush();
             em.clear();
 
-            Member m = em.find(Member.class, member1.getId());
-
-            System.out.println("m = " + m.getTeam().getClass());
-
-            System.out.println("===============");
-            m.getTeam().getName(); // 실제 사용 하는 시점에 db조회(프록시 초기화)
-            System.out.println("===============");
-
-            List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
-
+            Parent findParent = em.find(Parent.class, parent.getId());
+            findParent.getChildList().remove(0);
 
             tx.commit();
         } catch (Exception e) {
