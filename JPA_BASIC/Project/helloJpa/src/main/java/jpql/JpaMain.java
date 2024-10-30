@@ -5,6 +5,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import java.util.Objects;
 
 public class JpaMain {
 
@@ -21,20 +22,31 @@ public class JpaMain {
             member.setAge(10);
             em.persist(member);
 
-            TypedQuery<Member> typeQuery = em.createQuery("select m from Member m", Member.class); // 반환 타입 확실
-            Query query = em.createQuery("select m.username, m.age from Member m"); // 반환 타입 불분명
+            // 엔티티
+            List<Member> result = em.createQuery("select m from Member m", Member.class)
+                    .getResultList();
 
-            List<Member> resultList = typeQuery.getResultList();
-            for (Member member1 : resultList) {
-                System.out.println("member1 = " + member1);
-            }
+            // 엔티티
+            List<Team> result1 = em.createQuery("select m.team from Member m", Team.class)
+                    .getResultList();
 
-            TypedQuery<Member> parameterQuery
-                    = em.createQuery("select m from Member m where m.username = :username", Member.class);
+            // 엔티티
+            List<Team> result2 = em.createQuery("select m.team from Member m join m.team t", Team.class)
+                    .getResultList();
 
-            parameterQuery.setParameter("username", "userA");
-            Member singleResult = parameterQuery.getSingleResult();
-            System.out.println("singleResult = " + singleResult);
+            // 임베디드
+            List<Address> result3 = em.createQuery("select o.address from Order o", Address.class)
+                    .getResultList();
+
+            // 스칼라
+            List objectList = em.createQuery("select distinct m.username, m.age from Member m")
+                    .getResultList(); // Object
+
+            List<Objects[]> objectArrayList = em.createQuery("select distinct m.username, m.age from Member m")
+                    .getResultList(); // Object
+
+            List<MemberDTO> dtos = em.createQuery("select new jpql.MemberDTO(m.username, m.age) from Member m", MemberDTO.class)
+                    .getResultList(); // Dto
 
             tx.commit();
         } catch (Exception e) {
