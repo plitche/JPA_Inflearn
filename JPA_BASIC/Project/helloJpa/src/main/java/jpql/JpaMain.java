@@ -22,31 +22,10 @@ public class JpaMain {
             member.setAge(10);
             em.persist(member);
 
-            // 엔티티
-            List<Member> result = em.createQuery("select m from Member m", Member.class)
+            List<Member> resultList = em.createQuery("select m from Member m order by m.age desc", Member.class)
+                    .setFirstResult(0)
+                    .setMaxResults(10)
                     .getResultList();
-
-            // 엔티티
-            List<Team> result1 = em.createQuery("select m.team from Member m", Team.class)
-                    .getResultList();
-
-            // 엔티티
-            List<Team> result2 = em.createQuery("select m.team from Member m join m.team t", Team.class)
-                    .getResultList();
-
-            // 임베디드
-            List<Address> result3 = em.createQuery("select o.address from Order o", Address.class)
-                    .getResultList();
-
-            // 스칼라
-            List objectList = em.createQuery("select distinct m.username, m.age from Member m")
-                    .getResultList(); // Object
-
-            List<Objects[]> objectArrayList = em.createQuery("select distinct m.username, m.age from Member m")
-                    .getResultList(); // Object
-
-            List<MemberDTO> dtos = em.createQuery("select new jpql.MemberDTO(m.username, m.age) from Member m", MemberDTO.class)
-                    .getResultList(); // Dto
 
             tx.commit();
         } catch (Exception e) {
