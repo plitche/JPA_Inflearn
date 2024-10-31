@@ -28,9 +28,7 @@ public class JpaMain {
 
             member.changeTeam(team);
 
-            String query = "select m from Member m inner join m.team t";
-            String query1 = "select m from Member m left outer join m.team t";
-            String query2 = "select m from Member m, Team t where m.username = t.name";
+            String query = "select (select avg(m1.age) from Member m1) as avg from Member m inner join m.team t";
 
             List<Member> resultList = em.createQuery(query, Member.class)
                     .getResultList();
