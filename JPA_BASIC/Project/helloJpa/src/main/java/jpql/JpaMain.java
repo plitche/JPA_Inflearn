@@ -29,10 +29,26 @@ public class JpaMain {
 
             member.changeTeam(team);
 
-            String query = "select m.username, 'HELLO', TRUE from Member m" +
-                    " where m.type = jpql.MemberType.ADMIN";
+            String query =
+                    "select " +
+                            "case when m.age <= 10 then '학생요금' " +
+                            "     when m.age >= 60 then '경로요금' " +
+                            "     else '일반요금' " +
+                            "end as 요금구분 " +
+                    "from Member m";
 
-            List<Member> resultList = em.createQuery(query, Member.class)
+            String query1 = "select coalesce(m.username, '이름 없는 회원') from Member m";
+
+            String query2 = "select nullif(m.username, '관리자') from Member m";
+
+
+            List<String> resultList = em.createQuery(query, String.class)
+                    .getResultList();
+
+            List<String> resultList1 = em.createQuery(query1, String.class)
+                    .getResultList();
+
+            List<String> resultList2 = em.createQuery(query2, String.class)
                     .getResultList();
 
             tx.commit();
