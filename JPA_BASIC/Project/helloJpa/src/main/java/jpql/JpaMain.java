@@ -29,27 +29,19 @@ public class JpaMain {
 
             member.changeTeam(team);
 
-            String query =
-                    "select " +
-                            "case when m.age <= 10 then '학생요금' " +
-                            "     when m.age >= 60 then '경로요금' " +
-                            "     else '일반요금' " +
-                            "end as 요금구분 " +
-                    "from Member m";
+            String query = "select 'a' || 'b' from Member m";
+            String query1 = "select substring(m.username, 2, 3) from Member m";
+            String query2 = "select locate('de', 'abcdefg') from Member m";
 
-            String query1 = "select coalesce(m.username, '이름 없는 회원') from Member m";
+            String query3 = "select size(t.members) from Team t";
 
-            String query2 = "select nullif(m.username, '관리자') from Member m";
-
+//            @OrderColumn
+//            String query4 = "select index(t.members) from Team t";
+            String query5 = "select function('group_concat' m.username) From Member m";
 
             List<String> resultList = em.createQuery(query, String.class)
                     .getResultList();
 
-            List<String> resultList1 = em.createQuery(query1, String.class)
-                    .getResultList();
-
-            List<String> resultList2 = em.createQuery(query2, String.class)
-                    .getResultList();
 
             tx.commit();
         } catch (Exception e) {
