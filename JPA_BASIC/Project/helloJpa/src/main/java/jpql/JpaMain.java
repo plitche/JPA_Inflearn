@@ -24,11 +24,13 @@ public class JpaMain {
             Member member = new Member();
             member.setUsername("userA");
             member.setAge(10);
+            member.setType(MemberType.ADMIN);
             em.persist(member);
 
             member.changeTeam(team);
 
-            String query = "select (select avg(m1.age) from Member m1) as avg from Member m inner join m.team t";
+            String query = "select m.username, 'HELLO', TRUE from Member m" +
+                    " where m.type = jpql.MemberType.ADMIN";
 
             List<Member> resultList = em.createQuery(query, Member.class)
                     .getResultList();
