@@ -29,15 +29,9 @@ public class JpaMain {
 
             member.changeTeam(team);
 
-            String query = "select 'a' || 'b' from Member m";
-            String query1 = "select substring(m.username, 2, 3) from Member m";
-            String query2 = "select locate('de', 'abcdefg') from Member m";
-
-            String query3 = "select size(t.members) from Team t";
-
-//            @OrderColumn
-//            String query4 = "select index(t.members) from Team t";
-            String query5 = "select function('group_concat' m.username) From Member m";
+            String query = "select m.username From Member m";
+            String query1 = "select m.team.name From Member m";
+            String query2 = "select t.members From Team t";
 
             List<String> resultList = em.createQuery(query, String.class)
                     .getResultList();
