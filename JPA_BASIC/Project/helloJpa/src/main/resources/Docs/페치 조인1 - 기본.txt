@@ -1,0 +1,34 @@
+* 페치 조인(fetch join)
+    - SQL 조인 종류X
+    - JPQL에서 성능 최적화를 위해 제공하는 기능
+    - 연관된 엔티티나 컬렉션을 SQL 한 번에 함께 조회하는 기능
+    - join fetch 명령어 사용
+    - 페치 조인 :: = [ LEFT [OUTER] | INNER ] JOIN FETCH 조인 경로
+
+* 엔티티 페치 조인
+    - 회원을 조회하면서 연관된 팀도 함께 조회(SQL 한 번에)
+    - SQL을 보면 회원 뿐만 아니라 팀(T.*)도 함께 SELECT
+    - [JPQL]
+        select m from Member m join fetch m.team
+    - [SQL]
+        select M.*, T.* from Member M
+        inner join Team T on M.team_ID=T.id
+
+* 컬렉션 페치 조인
+    - 일대다 관계, 컬렉션 페치 조인
+    - [JPQL]
+        select t
+          from Team t join fetch t.members
+          where t.name = '팀A'
+
+    - [SQL]
+        select T.*, M.*
+          from Team T
+          inner join Member m on T.id = m.team_id
+        where T.name = '팀A'
+
+* 페치 조인과 DISTINCT
+    - SQL의 DISTINCT는 중복된 결과를 제거하는 명령(한계가 있음)
+    - JPQL의 DISTINCT 2가지 기능 제공
+        1. DISTINCT를 추가
+        2. 애플리케이션에서 엔티티 중복 제거
