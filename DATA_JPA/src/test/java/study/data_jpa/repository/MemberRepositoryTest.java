@@ -19,7 +19,6 @@ class MemberRepositoryTest {
 
     @Autowired MemberRepository memberRepository;
 
-/*
     @Test
     public void testMember() {
         Member member = new Member("userA");
@@ -32,5 +31,4 @@ class MemberRepositoryTest {
         assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
         assertThat(findMember).isEqualTo(member);
     }
-*/
 }
