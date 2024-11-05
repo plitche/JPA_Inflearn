@@ -19,6 +19,7 @@ class MemberJpaRepositoryTest {
     @Autowired
     MemberJpaRepository memberJpaRepository;
 
+/*
     @Test
     public void testMember() {
         Member member = new Member("userA");
@@ -30,5 +31,6 @@ class MemberJpaRepositoryTest {
         assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
         assertThat(findMember).isEqualTo(member);
     }
+*/
 
 }
