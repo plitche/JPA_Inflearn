@@ -10,4 +10,13 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     // : Spring이 Proxy객체를 만들면서 구현체를 spring jpa가 만들어서 injection을 해주기 때문
 
     // @Repository를 생략할 수 있다.
+
+    // 주요 메서드
+    /**
+     * save
+     * delete
+     * findById
+     * getOne
+     * findAll
+     */
 }
