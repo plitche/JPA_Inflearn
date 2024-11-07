@@ -3,6 +3,8 @@ package study.data_jpa.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import study.data_jpa.Entity.Member;
 
+import java.util.List;
+
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
     // 구현 코드가 없다
@@ -19,4 +21,10 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
      * getOne
      * findAll
      */
+
+    List<Member> findByUsernameAndAgeGreaterThan(String username, int age);
+
+    List<Member> findHelloBy();
+
+    List<Member> findTop3HelloBy();
 }
