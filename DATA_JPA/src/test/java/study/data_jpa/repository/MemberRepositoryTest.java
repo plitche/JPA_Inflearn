@@ -139,4 +139,20 @@ class MemberRepositoryTest {
             System.out.println("s = " + m);
         }
     }
+
+    @Test
+    public void returnType() {
+        Member m1 = new Member("AAA", 10);
+        Member m2 = new Member("BBB", 20);
+        memberRepository.save(m1);
+        memberRepository.save(m2);
+
+        List<Member> aaa = memberRepository.findListByUsername("AAA"); // 없을때 빈 컬렉션 반환
+        Member member = memberRepository.findMemberByUsername("AAA"); // 없을때 NULL 반환
+
+        // 없을 때 : Optional.empty
+        // 결과가 2개 이상일 때 : exception
+        Optional<Member> optionalMember = memberRepository.findOptionalByUsername("AAA");
+    }
+
 }
