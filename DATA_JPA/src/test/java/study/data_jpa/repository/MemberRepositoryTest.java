@@ -281,4 +281,34 @@ class MemberRepositoryTest {
         }
 
     }
+
+    @Test
+    public void queryHint() {
+        // given
+        Member member = memberRepository.save(new Member("member1", 10));
+        em.flush();
+        em.clear();
+
+        // when
+//        Member findMember = memberRepository.findById(member.getId()).get();
+        Member findMember = memberRepository.findReadOnlyByUsername("member1");
+        // 읽기 전용으로 인식하고 변겸감지 체크를 하지 않는다.
+        findMember.setUsername("member2");
+
+        em.flush();
+    }
+
+    @Test
+    public void lock() {
+        // given
+        Member member = memberRepository.save(new Member("member1", 10));
+        em.flush();
+        em.clear();
+
+        // when
+        List<Member> findMember = memberRepository.findLockByUsername("member1");
+        for (Member member1 : findMember) {
+            System.out.println("member1 = " + member1);
+        }
+    }
 }
