@@ -87,7 +87,7 @@ class MemberJpaRepositoryTest {
     }
 
     @Test
-    public void pagind() {
+    public void paging() {
         // GIVEN
         memberJpaRepository.save(new Member("member1", 10));
         memberJpaRepository.save(new Member("member2", 10));

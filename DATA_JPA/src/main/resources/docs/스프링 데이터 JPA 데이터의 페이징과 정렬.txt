@@ -1,0 +1,13 @@
+* 페이징과 정렬 파라미터
+    - org.springframework.data.domain.Sort
+    - org.springframework.data.domain.Pageable (내부에 Sort포함)
+
+    - org.springframework.data.domain.Page : 추가 count 쿼리 결과를 포함하는 페이징
+    - org.springframework.data.domain.Slice : 추가 count 쿼리 없이 다음 페이지만 확인 가능(내부적으로 limit + 1 조회)
+    - List(자바 컬렉션) : 추가 count 쿼리 없이 결과만 반환
+
+* 예제
+    - Page<Member> findByUsername(String name, Pageable pageable); // count 쿼리 사용
+    - Slice<Member> findByUsername(String name, Pageable pageable); // count 쿼리 사용 안함
+    - List<Member> findByUsername(String name, Pageable pageable); // count 쿼리 사용 안함
+    - List<Member> findByUsername(String name, Sort sort);
