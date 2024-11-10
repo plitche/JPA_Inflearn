@@ -231,4 +231,54 @@ class MemberRepositoryTest {
         // then
         assertThat(resultCount).isEqualTo(3);
     }
+
+    @Test
+    public void findMemberLzy() {
+        // given
+        // member1 -> teamA
+        // member2 -> teamB
+
+        Team teamA = new Team("TeamA");
+        Team teamB = new Team("TeamB");
+        teamRepository.save(teamA);
+        teamRepository.save(teamB);
+
+        Member member1 = new Member("member1", 10, teamA);
+        Member member2 = new Member("member2", 20, teamB);
+        memberRepository.save(member1);
+        memberRepository.save(member2);
+
+        em.flush();
+        em.clear();
+
+        // when
+        List<Member> members = memberRepository.findAll();
+        for (Member member : members) {
+            System.out.println("member = " + member.getUsername());
+            System.out.println("member.team = " + member.getTeam().getName());
+            // 위 team을 조회하는 시점에 1+n 문제가 발생한다.
+        }
+
+        // when2
+        List<Member> findMembers = memberRepository.findMemberFetchJoin();
+        for (Member findMember : findMembers) {
+            System.out.println("findMember = " + findMember);
+            System.out.println("findMember.team = " + findMember.getTeam().getName());
+        }
+
+        // when3
+        List<Member> allMembers = memberRepository.findAll();
+        for (Member allMember : allMembers) {
+            System.out.println("allMember = " + allMember);
+            System.out.println("allMember = " + allMember.getTeam().getName());
+        }
+
+        // when4
+        List<Member> result = memberRepository.findEntityGraphByUsername("member1");
+        for (Member member : result) {
+            System.out.println("member = " + member);
+            System.out.println("member = " + member.getTeam().getName());
+        }
+
+    }
 }
