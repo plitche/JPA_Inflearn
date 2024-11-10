@@ -1,5 +1,7 @@
 package study.data_jpa.repository;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,7 @@ class MemberRepositoryTest {
 
     @Autowired MemberRepository memberRepository;
     @Autowired TeamRepository teamRepository;
+    @PersistenceContext EntityManager em;
 
     @Test
     public void testMember() {
@@ -203,6 +206,29 @@ class MemberRepositoryTest {
 //        assertThat(slice.getTotalPages()).isEqualTo(2); // 전체 페이지 개수
         assertThat(slice.isFirst()).isTrue(); // 첫번째 페이지인지 유무
         assertThat(slice.hasNext()).isTrue(); // 다음 페이지가 있는지 유무
+    }
 
+    @Test
+    public void bulkUpdate() {
+        // given
+        memberRepository.save(new Member("member1", 10));
+        memberRepository.save(new Member("member2", 19));
+        memberRepository.save(new Member("member3", 20));
+        memberRepository.save(new Member("member4", 11));
+        memberRepository.save(new Member("member5", 40));
+
+        // when
+        int resultCount = memberRepository.bulkAgePlus(20);
+        // 영속성 컨텍스트에 남아있는 상태이기 때문에 원하는 결과가나오지 않는다.
+        // 때문에 영속성 컨텍스트를 비워준다.
+        em.flush();
+        em.clear();
+
+        List<Member> result = memberRepository.findByUsername("member5");
+        Member member = result.get(0);
+        System.out.println("member = " + member);
+
+        // then
+        assertThat(resultCount).isEqualTo(3);
     }
 }
