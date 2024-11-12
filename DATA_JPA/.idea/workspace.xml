@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="197b421c-a207-4ed0-9ceb-a08e8d808653" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/study/data_jpa/repository/MemberQueryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/study/data_jpa/repository/MemberRepositoryCustom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/study/data_jpa/repository/MemberRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/study/data_jpa/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/study/data_jpa/repository/MemberRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/study/data_jpa/repository/MemberRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/study/data_jpa/repository/MemberRepositoryTest.java" afterDir="false" />
@@ -56,38 +59,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build DATA_JPA.executor": "Run",
-    "Gradle.DATA_JPA.executor": "Debug",
-    "Gradle.DataJpaApplicationTests.executor": "Run",
-    "JUnit.DataJpaApplicationTests.contextLoads.executor": "Run",
-    "JUnit.MemberJpaRepositoryTest.executor": "Run",
-    "JUnit.MemberJpaRepositoryTest.testMember.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.DataJpaApplication.executor": "Run",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/plitche/Dev/Lecture/Inflearn/JPA/DATA_JPA",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "editor.preferences.tabs",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build DATA_JPA.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DATA_JPA.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.DataJpaApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DataJpaApplicationTests.contextLoads.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberJpaRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MemberJpaRepositoryTest.testMember.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.DataJpaApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/plitche/Dev/Lecture/Inflearn/JPA/DATA_JPA&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -223,7 +226,9 @@
       <workItem from="1730985519837" duration="2156000" />
       <workItem from="1731065533508" duration="3519000" />
       <workItem from="1731136711482" duration="3260000" />
-      <workItem from="1731219599665" duration="6335000" />
+      <workItem from="1731219599665" duration="7026000" />
+      <workItem from="1731227288687" duration="18000" />
+      <workItem from="1731414860434" duration="1995000" />
     </task>
     <servers />
   </component>
