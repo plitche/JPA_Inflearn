@@ -13,6 +13,14 @@ spring:
         #show_sql: true
         format_sql: true
 
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        max-page-size: 100
+#        one-indexed-parameters: true
+        # index가 0 -> 1로 변환(사실 0이랑 1이 같은 결과가 나온다.)
+        # 하지만 페이징 자체에 문제가 있음으로 사용 권장 X
 logging:
   level:
     org.hibernate.SQL: DEBUG
