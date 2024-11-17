@@ -23,8 +23,4 @@ public class HomeController {
         return "home/index";
     }
 
-    @GetMapping("/test")
-    public int test() {
-        return memberService.sum(1, 2);
-    }
 }

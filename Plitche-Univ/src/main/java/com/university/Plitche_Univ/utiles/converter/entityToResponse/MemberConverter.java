@@ -5,6 +5,6 @@ import com.university.Plitche_Univ.entity.Member;
 
 public interface MemberConverter {
 
-    public MemberResponseDto memberToResponseDto(Member member);
+    MemberResponseDto memberToResponseDto(Member member);
 
 }

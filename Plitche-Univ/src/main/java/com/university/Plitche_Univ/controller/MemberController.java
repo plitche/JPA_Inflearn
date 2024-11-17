@@ -1,13 +1,13 @@
 package com.university.Plitche_Univ.controller;
 
+import com.university.Plitche_Univ.dto.request.MemberRequestDto;
 import com.university.Plitche_Univ.dto.response.MemberResponseDto;
 import com.university.Plitche_Univ.service.MemberService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.awt.print.Pageable;
 import java.util.List;
@@ -21,16 +21,23 @@ public class MemberController {
 
     @GetMapping
     public List<MemberResponseDto> getMembers(
-            Pageable pageable
+            PageRequest pageRequest
     ) {
-        return memberService.getMemberList();
+        return memberService.getMemberList(pageRequest);
     }
 
     @GetMapping("/user-id/{UID}")
-    public MemberResponseDto getFindMember(
-            @RequestParam("UID") String userId
+    public MemberResponseDto getFindMemberById(
+            @PathVariable("UID") String userId
     ) {
         return memberService.getMemberById(userId);
     }
 
+    @PostMapping
+    public ResponseEntity<String> createMember(
+            @RequestBody MemberRequestDto memberRequestDto
+    ) {
+        memberService.saveMember(memberRequestDto);
+        return ResponseEntity.ok("success");
+    }
 }

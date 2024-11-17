@@ -1,7 +1,8 @@
 package com.university.Plitche_Univ.enums;
 
-import lombok.Data;
+import lombok.Getter;
 
+@Getter
 public enum Grade {
 
     FRESHMAN("FRESHMAN", "1학년"),
@@ -9,13 +10,12 @@ public enum Grade {
     JUNIOR("JUNIOR", "3학년"),
     SENIOR("SENIOR", "4학년");
 
+    private String value;
+    private String description;
+
     Grade(String value, String description) {
-
+        this.value = value;
+        this.description = description;
     }
-
-    public String getGradeByValue(String value) {
-        this.FRESHMAN.get
-    }
-
 
 }
