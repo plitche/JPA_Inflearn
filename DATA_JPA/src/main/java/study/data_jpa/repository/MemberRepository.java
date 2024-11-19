@@ -93,4 +93,26 @@ public interface MemberRepository extends JpaRepository<Member, Long>, MemberRep
     // select for update
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     List<Member> findLockByUsername(String username);
+
+    // 네이티브 쿼리
+    /**
+     * 반환 타입 : Object[], Tuple, DTO
+     * 제약
+     *  - Sort 파라미터를 통한 정렬이 정상 동작하지 않을 수 있음
+     *  - JPQL 처럼 애플리케이션 로딩 시점에 문법 확인 불가
+     *  - 동적 쿼리 불가
+     *
+     *  => 네이티브 SQL을 DTO로 조회할 때는 JdbcTemplate or myBatis 권장
+     */
+    @Query(value = "select * from member where username = ?", nativeQuery = true)
+    Member findByNativeQuery(String username);
+
+    @Query(value = "select m.member_id as id, m.username, t.name as teamName" +
+            " from member m left join team t",
+            countQuery = "select count(*) from member",
+            nativeQuery = true)
+    Page<MemberProjection> findByNativeProjection(Pageable pageable);
+
+
+
 }
