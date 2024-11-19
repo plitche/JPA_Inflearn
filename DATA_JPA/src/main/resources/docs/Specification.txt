@@ -1,0 +1,9 @@
+* Specification : 명세
+    - 스프링 데이터 JPA는 JPA Criteria를 활용해서 이 개념을 사용할 수 있도록 지원
+
+    - 술어(predicate)
+        > 참 또는 거짓으로 평가
+        > AND OR 같은 연산자로 조합해서 다양한 검색조건을 쉽게 생성(컴포지트 패턴)
+
+    - 사용 방법
+        : JpaSpecificationExecutor 인터페이스 상속
