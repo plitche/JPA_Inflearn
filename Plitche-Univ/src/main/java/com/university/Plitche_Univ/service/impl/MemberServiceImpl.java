@@ -5,7 +5,7 @@ import com.university.Plitche_Univ.dto.response.MemberResponseDto;
 import com.university.Plitche_Univ.entity.Member;
 import com.university.Plitche_Univ.repository.MemberRepo;
 import com.university.Plitche_Univ.service.MemberService;
-import com.university.Plitche_Univ.utiles.converter.Mapper;
+import com.university.Plitche_Univ.utiles.converter.MemberConverter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -21,14 +21,14 @@ public class MemberServiceImpl implements MemberService {
 
     private final MemberRepo memberRepo;
 
-    private final Mapper mapper;
+    private final MemberConverter memberConverter;
 
     @Override
     @Transactional(readOnly = true)
     public List<MemberResponseDto> getMemberList(PageRequest pageRequest) {
         List<Member> findMembers = memberRepo.findAll();
         return findMembers.stream().map(
-                mapper::memberToResponseDto
+                memberConverter::memberToResponseDto
         ).collect(Collectors.toList());
     }
 
@@ -36,7 +36,7 @@ public class MemberServiceImpl implements MemberService {
     @Transactional(readOnly = true)
     public MemberResponseDto getMemberById(String userId) {
         Member findMember = memberRepo.findMemberByLoginId(userId);
-        return mapper.memberToResponseDto(findMember);
+        return memberConverter.memberToResponseDto(findMember);
     }
 
     @Override

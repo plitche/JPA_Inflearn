@@ -1,41 +1,25 @@
 package com.university.Plitche_Univ.controller;
 
 import com.university.Plitche_Univ.dto.request.MemberRequestDto;
-import com.university.Plitche_Univ.dto.response.MemberResponseDto;
-import com.university.Plitche_Univ.service.MemberService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
-@RestController
-@RequiredArgsConstructor
+@Controller
 @RequestMapping("/member")
 public class MemberController {
 
-    private final MemberService memberService;
-
-    @GetMapping
-    public List<MemberResponseDto> getMembers(
-            PageRequest pageRequest
-    ) {
-        return memberService.getMemberList(pageRequest);
+    @GetMapping("/login")
+    public String login() {
+        return "member/login";
     }
 
-    @GetMapping("/user-id/{id}")
-    public MemberResponseDto getFindMemberById(
-            @PathVariable("id") String userId
-    ) {
-        return memberService.getMemberById(userId);
+    @PostMapping("/login")
+    public String login(@RequestBody MemberRequestDto requestDto) {
+        System.out.println("requestDto = " + requestDto);
+        return "member/login";
     }
 
-    @PostMapping
-    public ResponseEntity<String> createMember(
-            @RequestBody MemberRequestDto memberRequestDto
-    ) {
-        memberService.saveMember(memberRequestDto);
-        return ResponseEntity.ok("success");
-    }
 }

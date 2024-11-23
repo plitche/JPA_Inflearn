@@ -1,0 +1,58 @@
+/* 본문 스타일 */
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 22px;
+    color: #34495e;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* 탭 레이아웃 */
+.tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.tab {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.tab:hover {
+    background-color: #e74c3c;
+    color: white;
+    transform: translateY(-5px);
+}
+
+.tab a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+/* 탭 상세 정보 공간 */
+.tab-content {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: none; /* 기본적으로 숨김 처리 */
+}
+
+.tab-content.active {
+    display: block; /* 활성화된 탭의 상세 내용만 표시 */
+}

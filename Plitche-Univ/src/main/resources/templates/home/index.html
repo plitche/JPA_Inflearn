@@ -1,11 +1,87 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plitche University 학사행정 시스템</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <button>test</button>
+<!-- 헤더 -->
+<header>
+    <div class="logo">
+        Plitche <span>University</span>
+    </div>
+    <div class="header-buttons">
+        <a href="/member/login">로그인</a>
+        <a href="#mypage">마이페이지</a>
+    </div>
+</header>
+
+<!-- 본문 -->
+<main>
+    <h1>학사행정 시스템</h1>
+    <div class="tabs">
+        <div class="tab" onclick="showContent('timetable-content')">
+            <a href="#timetable">현재 강의 시간표</a>
+        </div>
+        <div class="tab" onclick="showContent('grades-content')">
+            <a href="#grades">학점 관리</a>
+        </div>
+        <div class="tab" onclick="showContent('courses-content')">
+            <a href="#courses">수강 신청</a>
+        </div>
+        <div class="tab" onclick="showContent('attendance-content')">
+            <a href="#attendance">출석 확인</a>
+        </div>
+        <div class="tab" onclick="showContent('notices-content')">
+            <a href="#notices">공지사항</a>
+        </div>
+        <div class="tab" onclick="showContent('profile-content')">
+            <a href="#profile">개인 정보 관리</a>
+        </div>
+    </div>
+
+    <!-- 탭 상세 정보 영역 -->
+    <div id="timetable-content" class="tab-content">
+        <h2>현재 강의 시간표</h2>
+        <p>강의 시간표가 이곳에 표시됩니다.</p>
+    </div>
+    <div id="grades-content" class="tab-content">
+        <h2>학점 관리</h2>
+        <p>학점 관련 정보가 이곳에 표시됩니다.</p>
+    </div>
+    <div id="courses-content" class="tab-content">
+        <h2>수강 신청</h2>
+        <p>수강 신청 정보가 이곳에 표시됩니다.</p>
+    </div>
+    <div id="attendance-content" class="tab-content">
+        <h2>출석 확인</h2>
+        <p>출석 확인 정보가 이곳에 표시됩니다.</p>
+    </div>
+    <div id="notices-content" class="tab-content">
+        <h2>공지사항</h2>
+        <p>학교 공지사항이 이곳에 표시됩니다.</p>
+    </div>
+    <div id="profile-content" class="tab-content">
+        <h2>개인 정보 관리</h2>
+        <p>개인 정보 관리 페이지가 이곳에 표시됩니다.</p>
+    </div>
+</main>
+
+<script>
+    function showContent(contentId) {
+        // 모든 탭 내용을 숨기기
+        const allContents = document.querySelectorAll('.tab-content');
+        allContents.forEach(content => content.classList.remove('active'));
+
+        // 클릭한 탭의 내용을 표시
+        const activeContent = document.getElementById(contentId);
+        if (activeContent) {
+            activeContent.classList.add('active');
+        }
+    }
+</script>
 </body>
 </html>

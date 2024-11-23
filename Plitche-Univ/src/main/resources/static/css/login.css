@@ -1,0 +1,165 @@
+/* 기본 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전체 배경 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 로그인 폼 */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login_wrap {
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login_box {
+    margin-bottom: 20px;
+}
+
+/* 아이디/비밀번호 입력 */
+.input_item {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input_item label {
+    font-size: 14px;
+    color: #666;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    transition: 0.3s;
+}
+
+.input_item input {
+    width: 100%;
+    padding: 12px;
+    padding-right: 30px; /* X 버튼이 겹치도록 오른쪽 여백 추가 */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+}
+
+.input_item input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.input_item input:focus + label {
+    top: -20px;
+    left: 10px;
+    font-size: 12px;
+}
+
+/* X 버튼 */
+.btn_delete {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn_delete .icon_delete {
+    font-size: 18px;
+    color: #888;
+}
+
+.btn_delete:hover .icon_delete {
+    color: #333;
+}
+
+/* 로그인 상태 유지 체크박스 */
+.login_keep_wrap {
+    margin-bottom: 15px;
+}
+
+.keep_check {
+    display: flex;
+    align-items: center;
+}
+
+.keep_text {
+    margin-left: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* 로그인 버튼 */
+.btn_login_wrap {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.btn_login {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.btn_login:hover {
+    background-color: #0056b3;
+}
+
+/* 오류 메시지 */
+.login_error_wrap {
+    display: none;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.login_error_wrap .error_message {
+    font-size: 14px;
+}
+
+/* 추가 링크 */
+.find_wrap {
+    text-align-last: justify;
+    margin-top: 20px;
+}
+
+.find_wrap li {
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+.find_text {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.find_text:hover {
+    text-decoration: underline;
+}
