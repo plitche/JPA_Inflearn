@@ -4,12 +4,14 @@ import com.university.Plitche_Univ.dto.request.MemberRequestDto;
 import com.university.Plitche_Univ.entity.embed.Address;
 import com.university.Plitche_Univ.enums.Grade;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 @Entity
 @Getter
 @Builder
+@AllArgsConstructor
 public class Member {
 
     @Id @GeneratedValue

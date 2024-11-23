@@ -14,13 +14,8 @@ public class HomeController {
     private final MemberService memberService;
 
     @GetMapping("/")
-    public String home() {
-        return "Hello world";
-    }
-
-    @GetMapping("/home")
     public String home(Model model) {
-        return "home/index";
+        return "home/home";
     }
 
 }

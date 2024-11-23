@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plitche University 학사행정 시스템</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* 헤더 스타일 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #e74c3c; /* 강조 색상 */
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .header-buttons a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .header-buttons a:hover {
+            background-color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        /* 본문 스타일 */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 22px;
+            color: #34495e;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tabs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .tab {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #e74c3c;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .tab a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<!-- 헤더 -->
+<header>
+    <div class="logo">
+        Plitche <span>University</span>
+    </div>
+    <div class="header-buttons">
+        <a href="#login">로그인</a>
+        <a href="#mypage">마이페이지</a>
+    </div>
+</header>
+
+<!-- 본문 -->
+<main>
+    <h1>학사행정 시스템</h1>
+    <div class="tabs">
+        <div class="tab">
+            <a href="#timetable">현재 강의 시간표</a>
+        </div>
+        <div class="tab">
+            <a href="#grades">학점 관리</a>
+        </div>
+        <div class="tab">
+            <a href="#courses">수강 신청</a>
+        </div>
+        <div class="tab">
+            <a href="#attendance">출석 확인</a>
+        </div>
+        <div class="tab">
+            <a href="#notices">공지사항</a>
+        </div>
+        <div class="tab">
+            <a href="#profile">개인 정보 관리</a>
+        </div>
+    </div>
+</main>
+</body>
+</html>

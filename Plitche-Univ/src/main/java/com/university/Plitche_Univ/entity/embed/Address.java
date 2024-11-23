@@ -1,7 +1,6 @@
 package com.university.Plitche_Univ.entity.embed;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

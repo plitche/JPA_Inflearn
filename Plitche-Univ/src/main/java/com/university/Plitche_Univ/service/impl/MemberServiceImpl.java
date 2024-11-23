@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     @Transactional(readOnly = true)
     public List<MemberResponseDto> getMemberList(PageRequest pageRequest) {
-        List<Member> findMembers = memberRepo.findAll(pageRequest);
+        List<Member> findMembers = memberRepo.findAll();
         return findMembers.stream().map(
                 mapper::memberToResponseDto
         ).collect(Collectors.toList());
