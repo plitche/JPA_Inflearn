@@ -103,7 +103,49 @@ public class QuerydslBasicTest {
         Assertions.assertThat(findMember.getUsername()).isEqualTo("member1");
     }
 
+    @Test
+    public void search() {
+        Member findMember = queryFactory
+                .selectFrom(member)
+                .where(member.username.eq("member1")
+                        .and(member.age.eq(10)))
+                .fetchOne();
 
+        Assertions.assertThat(findMember.getUsername()).isEqualTo("member1");
+
+        /**
+         * member.username.eq("member1")
+         * member.username.ne("member1")
+         * member.username.eq("member1").not()
+         *
+         * member.username.isNotNull()
+         *
+         * member.age.in(10, 20)
+         * member.age.notIn(10, 20)
+         * member.age.between(10, 20)
+         *
+         * member.age.goe(30)
+         * member.age.gt(30)
+         * member.age.loe(30)
+         * member.age.lt(30)
+         *
+         * member.username.like("member%")
+         * member.username.contains("member")
+         * member.username.startWith("member")
+         */
+    }
+
+    @Test
+    public void searchAndParam() {
+        Member findMember = queryFactory
+                .selectFrom(member)
+                .where(
+                        member.username.eq("member1"),
+                        member.age.eq(10))
+                .fetchOne();
+
+        Assertions.assertThat(findMember.getUsername()).isEqualTo("member1");
+    }
 
 
 
